@@ -26,7 +26,7 @@ Phạm vi dữ liệu:Lịch sử giá cổ phiếu (OHLCV), Báo cáo tài chí
 - **_Financial Engineering_**: Tính toán các chỉ số quan trọng (EPS, P/E, P/B, ROE, ROA) với độ chính xác cao dựa trên dữ liệu từ báo cáo tài chính (xử lý lệch đơn vị Đồng/Nghìn đồng).
 
 - **_Star Schema_**: Thiết kế Database tối ưu cho truy vấn và làm báo cáo BI.
-- **_ Advanced Analytics (DAX)_** Thực hiện Chấm điểm Vĩ mô (Macro Scoring) và Xếp hạng Cổ phiếu (Stock Ranking) trên Power BI.
+- **_Advanced Analytics(DAX)_** Thực hiện Chấm điểm Vĩ mô (Macro Scoring) và Xếp hạng Cổ phiếu (Stock Ranking) trên Power BI.
 
 
 # 🏗 2. Kiến trúc hệ thống
