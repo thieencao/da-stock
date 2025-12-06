@@ -21,14 +21,12 @@ Phạm vi dữ liệu:Lịch sử giá cổ phiếu (OHLCV), Báo cáo tài chí
 
 Điểm nổi bật:
 
-Automated ETL: Tự động làm sạch, chuẩn hóa tên cột (Snake_case) và xử lý giá trị thiếu (Null) theo nghiệp vụ tài chính.
+- **_Automated ETL_**: Làm sạch, chuẩn hóa tên cột (Snake_case) và xử lý giá trị thiếu (Null) theo nghiệp vụ tài chính.
 
-Financial Engineering: Tự động tính toán các chỉ số quan trọng (EPS, P/E, P/B, ROE, ROA) với độ chính xác cao (xử lý lệch đơn vị Đồng/Nghìn đồng).
+- **_Financial Engineering_**: Tính toán các chỉ số quan trọng (EPS, P/E, P/B, ROE, ROA) với độ chính xác cao dựa trên dữ liệu từ báo cáo tài chính (xử lý lệch đơn vị Đồng/Nghìn đồng).
 
-Star Schema: Thiết kế Database tối ưu cho truy vấn và làm báo cáo BI.
-
-Data Integrity: Sử dụng chiến lược Truncate & Append để đảm bảo dữ liệu luôn tươi mới và không trùng lặp. 
-
+- **_Star Schema_**: Thiết kế Database tối ưu cho truy vấn và làm báo cáo BI.
+- **_ Advanced Analytics (DAX)_** Thực hiện Chấm điểm Vĩ mô (Macro Scoring) và Xếp hạng Cổ phiếu (Stock Ranking) trên Power BI.
 
 
 # 🏗 2. Kiến trúc hệ thống
@@ -48,7 +46,7 @@ DA_STOCK/
 │   └── calculate_ratios.py     # Script: Tính toán chỉ số P/E, ROE, ROA...
 │
 ├── load/                       # Tầng nạp dữ liệu
-│   └── load_to_mysql.py        # Script: Đẩy dữ liệu vào MySQL (Truncate & Append)
+│   └── load_to_mysql.py        # Script: Đẩy dữ liệu vào MySQL 
 │
 ├── create_database.sql                      # SQL Scripts
 │   
@@ -61,28 +59,28 @@ DA_STOCK/
 ```
 # 🚀 4. Cài đặt & Hướng dẫn sử dụng
 ## 4.1 Yêu cầu hệ thống (Prerequisites)
-Python 3.8+
+- **_Python 3.8+_**
 
-MySQL Server 
+- **_MySQL Server_**
 
-Power BI Desktop
+- **_Power BI Desktop_**
 
 ## 4.2 Cài đặt
 
-Bước 1: Clone dự án về máy:
+**Bước 1:** Clone dự án về máy:
 
 ```powershell
 git clone https://github.com/thieencao/da-stock.git
 
 cd DA_STOCK
 ```
-Bước 2: Cài đặt các thư viện cần thiết:
+**Bước 2:** Cài đặt các thư viện cần thiết:
 
 ```Bash
 
 pip install pandas sqlalchemy pymysql
 ```
-Bước 3: Cấu hình kết nối Database: Mở file load/load_to_mysql.py và cập nhật mật khẩu MySQL của bạn:
+**Bước 3:** Cấu hình kết nối Database: Mở file load/load_to_mysql.py và cập nhật mật khẩu MySQL của bạn:
 
 ```
 
@@ -94,22 +92,22 @@ Thực hiện lần lượt các lệnh sau để vận hành hệ thống:
 
 
 
-Bước 1: Khởi tạo Database 
+**Bước 1:** Khởi tạo Database 
 Mở MySQL Workbench và chạy file SQL script (hoặc code tạo bảng) để tạo các bảng Dim/Fact và thiết lập Khóa chính (Primary Key).
 
 
 
-Bước 2: Làm sạch dữ liệu (Transform)
+**Bước 2:** Làm sạch dữ liệu (Transform)
 ```Bash
 
 python transform/transform.py
 ```
-Bước 3: Tính toán chỉ số (Enrichment)
+**Bước 3:** Tính toán chỉ số (Enrichment)
 ```Bash
 
 python transform/calculate_ratios.py
 ```
-Bước 4: Nạp vào MySQL (Load)
+**Bước 4:** Nạp vào MySQL (Load)
 ```Bash
 
 python load/load_to_mysql.py
@@ -118,8 +116,14 @@ python load/load_to_mysql.py
 # 📊 5. Power BI Data Model (Star Schema)
 ![Data Model](readme/datamodel.png)
 
+---
 # 📈 6. Dashboard báo cáo
 ![Market_Overview](dashboard/market_overview.png)
+
+
+---
+
+
 ![Fundamental_analysis](dashboard/fundamental_analysis.png)# da-stock
 
 ---
