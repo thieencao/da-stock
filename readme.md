@@ -1,4 +1,4 @@
-📑 Mục lục
+# 📑 Mục lục
 📌 1. Giới thiệu
 
 🏗 2. Kiến trúc hệ thống
@@ -11,17 +11,15 @@
 
 📈 6. Dashboard báo cáo
 
-📌 1. Giới thiệu
+---
+# 📌 1. Giới thiệu
 Dự án này giải quyết bài toán phân tán dữ liệu tài chính bằng cách xây dựng một Data Warehouse tập trung. Hệ thống thực hiện quy trình ETL (Extract - Transform - Load) để biến đổi dữ liệu thô từ nhiều nguồn CSV thành các bảng Fact/Dimension chuẩn chỉnh trong MySQL.
 
-Phạm vi dữ liệu:
-Lịch sử giá cổ phiếu (OHLCV).
 
-Báo cáo tài chính (Cân đối kế toán, KQKD, Lưu chuyển tiền tệ).
 
-Chỉ số vĩ mô (Macro).
+Phạm vi dữ liệu:Lịch sử giá cổ phiếu (OHLCV), Báo cáo tài chính (Cân đối kế toán, KQKD, Lưu chuyển tiền tệ), Chỉ số vĩ mô (Macro).
 
-<!-- Điểm nổi bật:
+Điểm nổi bật:
 
 Automated ETL: Tự động làm sạch, chuẩn hóa tên cột (Snake_case) và xử lý giá trị thiếu (Null) theo nghiệp vụ tài chính.
 
@@ -29,13 +27,17 @@ Financial Engineering: Tự động tính toán các chỉ số quan trọng (EP
 
 Star Schema: Thiết kế Database tối ưu cho truy vấn và làm báo cáo BI.
 
-Data Integrity: Sử dụng chiến lược Truncate & Append để đảm bảo dữ liệu luôn tươi mới và không trùng lặp. -->
+Data Integrity: Sử dụng chiến lược Truncate & Append để đảm bảo dữ liệu luôn tươi mới và không trùng lặp. 
 
-🏗 2. Kiến trúc hệ thống
-readme/data_flow.png
-📂 3. Cấu trúc dự án
-Plaintext
 
+
+# 🏗 2. Kiến trúc hệ thống
+
+![Flow](readme/data_flow.png)
+
+# 📂 3. Cấu trúc dự án
+
+```text
 DA_STOCK/
 │
 ├── data/                       # Chứa dữ liệu thô (Raw CSV: OHLCV, BCTC, Macro...)
@@ -56,59 +58,66 @@ DA_STOCK/
 │
 ├── requirements.txt            # Danh sách thư viện Python
 └── README.md                   # Tài liệu dự án
-🚀 4. Cài đặt & Hướng dẫn sử dụng
-4.1 Yêu cầu hệ thống (Prerequisites)
+```
+# 🚀 4. Cài đặt & Hướng dẫn sử dụng
+## 4.1 Yêu cầu hệ thống (Prerequisites)
 Python 3.8+
 
 MySQL Server 
 
 Power BI Desktop
 
-4.2 Cài đặt
+## 4.2 Cài đặt
+
 Bước 1: Clone dự án về máy:
 
-Bash
+```powershell
+git clone https://github.com/thieencao/da-stock.git
 
-git clone https://github.com/username-cua-ban/vn-stock-warehouse.git
 cd DA_STOCK
+```
 Bước 2: Cài đặt các thư viện cần thiết:
 
-Bash
+```Bash
 
 pip install pandas sqlalchemy pymysql
+```
 Bước 3: Cấu hình kết nối Database: Mở file load/load_to_mysql.py và cập nhật mật khẩu MySQL của bạn:
 
-Python
+```
 
 DB_USER = 'root'
 DB_PASS = 'your_password'  # <--- Thay mật khẩu của bạn vào đây
-4.3 Chạy Pipeline
+```
+## 4.3 Chạy Pipeline
 Thực hiện lần lượt các lệnh sau để vận hành hệ thống:
 
-Bước 1: Khởi tạo Database Schema
+
+
+Bước 1: Khởi tạo Database 
 Mở MySQL Workbench và chạy file SQL script (hoặc code tạo bảng) để tạo các bảng Dim/Fact và thiết lập Khóa chính (Primary Key).
 
+
+
 Bước 2: Làm sạch dữ liệu (Transform)
-Bash
+```Bash
 
 python transform/transform.py
-Tác dụng: Chuẩn hóa tên cột, xử lý Null, loại bỏ dòng trùng lặp.
-
+```
 Bước 3: Tính toán chỉ số (Enrichment)
-Bash
+```Bash
 
 python transform/calculate_ratios.py
-Tác dụng: Tính toán ROE, ROA, EPS, P/E... và xuất ra file financial_ratios.csv.
-
-Bước 4: Nạp vào Data Warehouse (Load)
-Bash
+```
+Bước 4: Nạp vào MySQL (Load)
+```Bash
 
 python load/load_to_mysql.py
-Tác dụng: Đẩy toàn bộ dữ liệu sạch vào MySQL.
+```
+---
+# 📊 5. Power BI Data Model (Star Schema)
+![Data Model](readme/datamodel.png)
 
-📊 5. Power BI Data Model(Star Schema)
-readme/datamodel.png
-
-📈 6. Dashboard báo cáo
+# 📈 6. Dashboard báo cáo
 ![Market_Overview](dashboard/market_overview.png)
 ![Fundamental_analysis](dashboard/fundamental_analysis.png)# da-stock
