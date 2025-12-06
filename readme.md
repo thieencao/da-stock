@@ -121,3 +121,6 @@ python load/load_to_mysql.py
 # 📈 6. Dashboard báo cáo
 ![Market_Overview](dashboard/market_overview.png)
 ![Fundamental_analysis](dashboard/fundamental_analysis.png)# da-stock
+
+---
+© 2025 thieencao — All rights reserved.
