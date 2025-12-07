@@ -124,6 +124,12 @@ python load/load_to_mysql.py
 ---
 
 
+![Industry_analysis](dashboard/Industry_analysis.png)
+
+
+---
+
+
 ![Fundamental_analysis](dashboard/fundamental_analysis.png)# da-stock
 
 ---
