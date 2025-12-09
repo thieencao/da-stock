@@ -13,11 +13,10 @@
 
 ---
 # 📌 1. Giới thiệu
-Dự án này giải quyết bài toán phân tán dữ liệu tài chính bằng cách xây dựng một Data Warehouse tập trung. Hệ thống thực hiện quy trình ETL (Extract - Transform - Load) để biến đổi dữ liệu thô từ nhiều nguồn CSV thành các bảng Fact/Dimension chuẩn chỉnh trong MySQL.
+Dự án này giải quyết bài toán phân tán dữ liệu tài chính bằng cách xây dựng một Data Warehouse tập trung.
+Hệ thống thực hiện quy trình ETL (Extract - Transform - Load) để biến đổi dữ liệu thô từ nhiều nguồn CSV đã crawl thành các bảng Fact/Dimension chuẩn chỉnh trong MySQL.
 
-
-
-Phạm vi dữ liệu:Lịch sử giá cổ phiếu (OHLCV), Báo cáo tài chính (Cân đối kế toán, KQKD, Lưu chuyển tiền tệ), Chỉ số vĩ mô (Macro).
+Phạm vi dữ liệu: Lịch sử giá cổ phiếu (OHLCV), Báo cáo tài chính (Cân đối kế toán, KQKD, Lưu chuyển tiền tệ), Chỉ số vĩ mô (Macro).
 
 Điểm nổi bật:
 
@@ -90,12 +89,8 @@ DB_PASS = 'your_password'  # <--- Thay mật khẩu của bạn vào đây
 ## 4.3 Chạy Pipeline
 Thực hiện lần lượt các lệnh sau để vận hành hệ thống:
 
-
-
 **Bước 1:** Khởi tạo Database 
 Mở MySQL Workbench và chạy file SQL script (hoặc code tạo bảng) để tạo các bảng Dim/Fact và thiết lập Khóa chính (Primary Key).
-
-
 
 **Bước 2:** Làm sạch dữ liệu (Transform)
 ```Bash
@@ -118,17 +113,44 @@ python load/load_to_mysql.py
 
 ---
 # 📈 6. Dashboard báo cáo
-![Market_Overview](dashboard/market_overview.png)
+Trang tổng quan cung cấp cái nhìn toàn cảnh về sức khỏe nền kinh tế vĩ mô và tác động đến thị trường:
+- **Các chỉ số kinh tế chính**: Theo dõi xu hướng tăng trưởng GDP, Lạm phát (CPI), Lãi suất và Tỷ lệ thất nghiệp.
 
+- **Điểm số vĩ mô tổng hợp (Macro Scoring)**: Đánh giá tình hình kinh tế theo thang điểm 10 dựa trên thuật toán định lượng.
+
+- **Biến động tỷ giá**: Xu hướng và áp lực tỷ giá hối đoái theo năm(USD/VND).
+
+- **Xu hướng thị trường**: Biểu đồ xu hướng diễn biến chỉ số VNINDEX qua các năm .
+
+![Market_Overview](dashboard/market_overview.png)
 
 ---
 
+Trang phân tích ngành cung cấp góc nhìn so sánh vị thế, định giá và dòng tiền giữa các nhóm ngành:
+
+- **Ma trận Định giá & Hiệu quả:** Nhận diện các ngành có hiệu quả sinh lời tốt, định giá rẻ dựa trên biểu đồ phân tán P/E (Trục X) và ROE (Trục Y).
+
+- **Sức khỏe tài chính ngành:** So sánh tỷ lệ đòn bẩy (D/E Ratio) và quy mô lợi nhuận ròng giữa các ngành.
+
+- **Phân tích dòng tiền (Money Flow):** Tìm kiếm các nghành đang được thị trường chú ý cao .
+
+- **Hiệu suất đầu tư:** Thể hiện ngành có mức tăng giá ấn tượng nhất và xu hướng của dòng tiền trong năm.
 
 ![Industry_analysis](dashboard/Industry_analysis.png)
 
-
 ---
 
+Trang phân tích cơ bản cung cấp thông tin chi tiết về sức khỏe tài chính và chất lượng của từng doanh nghiệp:
+
+- **Hệ thống xếp hạng cổ phiếu (Stock Ranking):** Bảng chấm điểm cổ phiếu tổng hợp dựa trên Chất lượng, Định giá và Tăng trưởng.
+
+- **Cơ cấu nguồn vốn:** Phân tích xu hướng Nợ phải trả và Vốn chủ sở hữu qua các năm.
+
+- **Hiệu quả kinh doanh:** So sánh tăng trưởng Doanh thu và Lợi nhuận sau thuế (Net Profit).
+
+- **Chất lượng lợi nhuận:** Đối chiếu Lợi nhuận ròng với Dòng tiền từ hoạt động kinh doanh (CFO) để phát hiện rủi ro.
+
+- **Tương quan giá:** So sánh biến động giá cổ phiếu so với chỉ số chung VNINDEX.
 
 ![Fundamental_analysis](dashboard/fundamental_analysis.png)# da-stock
 
